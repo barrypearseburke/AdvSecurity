@@ -31,9 +31,17 @@ def vigenereEncrypt(phrase,pw):
         if i in alphabet:
             phrasePos = alphabet.index(i)
             if counter > len(pw):
-                keypos = counter%len(pw)
+                keynumber = counter%len(pw)
+                pwlist =list(pw)
+                key=pwlist(counter)
+                if key in alphabet:
+                    keypos = alphabet.index(i)
             else:
-                keypos = counter
+                keynumber = counter
+                pwlist =list(pw)
+                key=pwlist(counter)
+                if key in alphabet:
+                    keypos = alphabet.index(key)
 
             shift = phrasePos + keypos
             encryptValue.append(alphabet[shift%26])
@@ -41,3 +49,4 @@ def vigenereEncrypt(phrase,pw):
         else:
             continue
         counter= counter+1
+    return str(encryptValue)
