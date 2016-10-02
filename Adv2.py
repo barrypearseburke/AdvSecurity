@@ -53,7 +53,7 @@ def vigenereEncrypt(phrase,pw,decrypt=False):
 
     return ''.join(encryptValue)
 
-def vigenereDecryptBrute(phrase, knownWord,minLength,MaxLength,hint=False):
+def vigenereDecryptBrute(phrase, knownWord,minLength,MaxLength):
     t1=time.time()
     alphabet = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
     guessKey =[]
@@ -61,13 +61,10 @@ def vigenereDecryptBrute(phrase, knownWord,minLength,MaxLength,hint=False):
     cipherCounter =0
     i =0
     phraseCracked = False
-    if hint != False: # Cant brute force it. setting up a hint as to start brute force near where i know the key is
-        for i in list(hint):
-            guessKey.append(i)
-    elif hint ==False:
-        while i !=minLength:
-            guessKey.append('a')
-            i=i+1
+
+    while i !=minLength:
+        guessKey.append('a')
+        i=i+1
 
 
     while phraseCracked == False:
@@ -75,18 +72,12 @@ def vigenereDecryptBrute(phrase, knownWord,minLength,MaxLength,hint=False):
         if knownWord in returnString:
             possiblesolution = (returnString,''.join(guessKey))#decrptedvalue,key used
             print('************************************')
-            print("{0}{1}".format(possiblesolution[0],possiblesolution[1]))
+            print("{0}-{1}".format(possiblesolution[0],possiblesolution[1]))
             print('************************************')
             returnvalues.append(possiblesolution)
 
         changekey = False
         #change key
-
-        cipherCounter = cipherCounter +1
-        if cipherCounter%1000 ==0:
-            t2=time.time()
-            t3=t2-t1
-            print("key at {0}".format(guessKey))
         lenofkey =len(guessKey)-1
         while changekey == False:
             if guessKey[lenofkey] == 'z':

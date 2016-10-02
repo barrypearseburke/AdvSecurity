@@ -62,9 +62,9 @@ class TestCaesar(TestCase):
         self.assertEqual(DecrpytedValue,q3Encrypt.lower().replace(",","").replace(" ", ""))
 
     def test_brute(self):
-        EncrpytedValue = vigenereEncrypt('TestPhrase','passs')
+        EncrpytedValue = vigenereEncrypt('TestPhrase','pass')
         t1=time.time()
-        returnvalues = vigenereDecryptBrute(EncrpytedValue,'test',2,5,hint='pasaa')
+        returnvalues = vigenereDecryptBrute(EncrpytedValue,'test',2,4,)
         t2 = time.time()
         t3 = t2-t1
         print("time Taken {}sec".format(t3))
@@ -75,7 +75,7 @@ class TestCaesar(TestCase):
     def testq4w2(self):
         #question4
         t1=time.time()
-        returnvalues = vigenereDecryptBrute(q4decrypt,'thursday',16,16,hint='facebokkpasswoaa')
+        returnvalues = vigenereDecryptBrute(q4decrypt,'thursday',16,16)
         t2 = time.time()
         t3 = t2-t1
         print("time Taken {}sec".format(t3))
