@@ -62,6 +62,7 @@ class TestCaesar(TestCase):
         self.assertEqual(DecrpytedValue,q3Encrypt.lower().replace(",","").replace(" ", ""))
 
     def test_brute(self):
+        #brute force test with small key.
         EncrpytedValue = vigenereEncrypt('TestPhrase','pass')
         t1=time.time()
         returnvalues = vigenereDecryptBrute(EncrpytedValue,'test',2,4,)
@@ -73,9 +74,9 @@ class TestCaesar(TestCase):
             print("pharse:{0}. Key:{1}".format(i[0],i[1]))
 
     def testq4w2(self):
-        #question4
+        #question4 # key is too long, however this will eveuntlly decrpty . See Test Brute for an example with a smaller key.
         t1=time.time()
-        returnvalues = vigenereDecryptBrute(q4decrypt,'thursday',16,16)
+        returnvalues = vigenereDecryptBrute(q4decrypt,'thursday',11,17) #adds a key range to search to cut down on time.
         t2 = time.time()
         t3 = t2-t1
         print("time Taken {}sec".format(t3))
