@@ -21,8 +21,10 @@ def addPadding(String,keylen):
         return String
     padding = int(keylen)%len(String)
     if padding >2:
-        paddedString = String+'\x00\x000{0}'.format(padding)
+        for i in range(padding-2):
+            String = String+'\x00'
+        String = String+'0{0}'.format(padding)
     else:
-        paddedString = String+'0{0}'.format(padding)
-    return(paddedString)
+        String = String+'0{0}'.format(padding)
+    return(String)
 
