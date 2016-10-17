@@ -20,10 +20,13 @@ def addPadding(String,keylen):
     if len(String) == int(keylen):
         return String
     padding = int(keylen)%len(String)
-    if padding >1:
+    if padding >1 :
         for i in range(padding-2):
             String = String+'\x00'
-        String = String+'0{0}'.format(padding)
+        if padding>9:
+            String = String+'{0}'.format(padding)
+        else:
+            String = String + '0{0}'.format(padding)
     elif padding ==1:
         String = String+'{0}'.format(padding)
     return(String)
