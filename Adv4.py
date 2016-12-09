@@ -27,23 +27,17 @@ p = "AAAABBBBCCCCDDDDAA"
 
 padded = pad(p)
 
-print ('plaintext {0}- '.format(p))
-print ('padded {0}- '.format( padded))
+print ('plaintext {0} - '.format(p))
 
 c = aes_encrypt.encrypt(padded)
 
-print (c)
-# encode encrypted text with hex to make
-# it human readable
 cipher = c.encode('hex')
-print ('ciphertext\t- ', cipher)
+print ('ciphertext {0} '.format(cipher))
 
 
 
-# decrypt the ciphertext back into plaintext
 decrypted = aes_decrypt.decrypt(c)
 
-print ('decrypted{0}- '.format( decrypted))
 
 if decrypted == padded:
     print ('matched')
@@ -51,5 +45,5 @@ if decrypted == padded:
 plen = len(p)
 unpad = unpad(decrypted, plen)
 
-print ('unpadded {0}-'.format(unpad))
+print ('decrypted {0}'.format(unpad))
 
