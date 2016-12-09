@@ -19,13 +19,3 @@ for i in range (im.size[0]):
 
 im = Image.fromarray(data)
 im.save("GreyCat.png")
-
-
-# data[512,512] = [254,0,0]       # Makes the middle pixel red
-# data[512,513] = [0,0,255]       # Makes the next pixel blue
-#
-# img = smp.toimage( data )       # Create a PIL image
-# img.show()                      # View in default viewer
-# im.size[1]
-#
-# data = np.zeros( (im.size[0],im.size[1],3), dtype=np.uint8 )
